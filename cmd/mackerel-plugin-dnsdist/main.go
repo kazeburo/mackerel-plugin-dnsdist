@@ -127,6 +127,7 @@ func (p *Plugin) GraphDefinition() map[string]mp.Graphs {
 			Label: labelPrefix + ": Latency (microseconds)",
 			Unit:  "integer",
 			Metrics: []mp.Metrics{
+				{Name: "latency-avg1000", Label: "Latency1000"},
 				{Name: "latency-avg1000000", Label: "Latency1000000"},
 			},
 		},
@@ -135,7 +136,7 @@ func (p *Plugin) GraphDefinition() map[string]mp.Graphs {
 			Unit:  "integer",
 			Metrics: []mp.Metrics{
 				{Name: "queries", Label: "Queries", Diff: true},
-				{Name: "rdqueries", Label: "Query widh rd bit", Diff: true},
+				{Name: "rdqueries", Label: "Query with rd bit", Diff: true},
 			},
 		},
 		"responses": {
