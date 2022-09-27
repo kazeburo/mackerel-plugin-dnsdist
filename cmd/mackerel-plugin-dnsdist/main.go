@@ -10,11 +10,12 @@ import (
 	"regexp"
 	"runtime"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/jessevdk/go-flags"
 	mp "github.com/mackerelio/go-mackerel-plugin"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 const (
@@ -98,7 +99,7 @@ func (p *Plugin) MetricKeyPrefix() string {
 }
 
 func (p *Plugin) GraphDefinition() map[string]mp.Graphs {
-	labelPrefix := strings.Title(p.Prefix)
+	labelPrefix := cases.Title(language.Und, cases.NoLower).String(p.Prefix)
 	return map[string]mp.Graphs{
 		"acl-drop": {
 			Label: labelPrefix + ": Dropped packets becaused of the ACL",
